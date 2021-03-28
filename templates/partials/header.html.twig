@@ -1,0 +1,102 @@
+
+{% block body %}
+    <header>
+        <nav class="navbar">
+            <a href="#">ParIciSainté</a>
+            <span class="nav-button">
+            <button class="circle-btn">
+                <svg 
+                    width="80" 
+                    height="80" 
+                    viewBox="-10 -10 140 140" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="59.5" stroke="white" class="bg-svg"/>
+                <circle cx="60" cy="60" r="59.5" stroke="white" class="filled" pathLength="1"/>
+                </svg>
+                <span><i class="fas fa-bars"></i></span>
+                <span><i class="fas fa-times close"></i></span>
+            </button>
+                
+                
+            </span>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#">Accueil</a></li>
+                <li class="toggle-sub"><a>Présentation</a>
+                    <ul class="sub-menu">
+                        <li class="drop-item"><a href="#">Histoire</a></li>
+                    </ul>
+                <li>
+                <li class="toggle-sub"><a>Association</a>
+                    <ul class="sub-menu">
+                        <li class="drop-item"><a href="#">Déplacement</a></li>
+                        <li class="drop-item"><a href="#">Handi-verts</a></li>
+                        <li class="drop-item"><a href="#">Photos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a>Nous contacter</a></li>
+            </ul>
+        </nav>
+    </header>
+{% endblock %}
+{% block javascripts %}
+
+<script>
+$(document).ready(function(){
+    $('.close').css('display', 'none');
+    $('.fa-bars').css('display', 'inline-block');
+    $('.nav-menu').css('display', 'none');
+
+    $('.nav-button').click(function() {
+        var clicks = $(this).data('clicks');
+        if (clicks) {
+            $('.fa-bars').css('display', 'inline-block');
+            $('.nav-menu').css('display', 'none');
+            $('.close').css('display', 'none');
+        } else {
+            // even clicks
+            $('.fa-bars').css('display', 'none');
+            $('.nav-menu').css('display', 'block');
+            $('.close').css('display', 'inline-block');
+        }
+        $(this).data("clicks", !clicks);
+    });
+     
+  
+
+    $('.nav-menu ul.sub-menu').hide();
+
+    
+
+    $(".nav-menu li.toggle-sub > a").click(function(){
+        if($(this).next("ul.sub-menu:visible").length != 0){
+            $('i').removeClass('fa-sort-up');
+            $('i').addClass('fa-sort-down');
+            $(this).next("ul.sub-menu").slideUp("normal");
+        }else{
+            $(".nav-menu ul.sub-menu").slideUp("normal");
+            $('i').removeClass('fa-sort-down');
+            $('i').addClass('fa-sort-up');
+            
+            $(this).next("ul.sub-menu").slideDown("normal");
+        }
+
+        return false;
+    });
+
+    /* Permet de fermer les items de sous menu au clique en dehors des éléments */
+    $(document).click(function(event) { 
+        var $target = $(event.target);
+        
+        if(!$target.closest('.toggle-sub .sub-menu').length && 
+        $('.toggle-sub .sub-menu').is(":visible")) {
+            $('.toggle-sub .sub-menu').css('display', 'none');
+        }        
+    });
+
+
+});
+   
+</script>
+
+{% endblock %}

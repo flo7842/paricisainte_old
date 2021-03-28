@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #222222;
+}
+
+header{
+    background-image: ;
+}
+
+.circle-btn{
+    outline: none;
+    background: none;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.circle-btn:hover{
+    transform: scale(1.1);
+}
+.circle-btn:active{
+    transform: scale(1.2);
+}
+.circle-btn span{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+.fa-user{
+    font-size: 3rem;
+    color: white;
+}
+svg{
+ transform: rotate(-90deg);
+}
+.bg-svg{
+    stroke: #b8b8b834;
+    stroke-width: 3;
+}
+.filled{
+    stroke: #222222;
+    stroke-width: 3;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.4s ease-in-out;
+}
+.circle-btn:hover .filled{
+    stroke-dashoffset: 0;
+}
+
+.navbar{
+    background-color: #ddd;
+    padding: 0 1rem;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-button{
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.nav-item, .toggle-sub, .drop-item{
+    padding: 10px 20px;
+}
+
+.toggle-sub{
+    position: relative;
+}
+
+
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-menu{
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #ddd;
+    margin: 0;
+    list-style: none;
+}
+.nav-menu li{
+    list-style-type: none;
+}
+
+.svg-burger{
+    cursor: pointer;
+}
+
+.fa-bars{
+    font-size: 2.9rem;
+}
+
+.close{
+    font-size: 3.5rem;
+}
